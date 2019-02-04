@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  font-size: 25px;
+}
+body {
+  font-family: BentonSansRegular,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
+}
+
+
+/*----------------------------------*/
+/*--------NAVIGATION BAR------------*/
+/*----------------------------------*/
+header {
+  background-color: rgb(100,1,6);
+	width: 100%;
+	box-shadow: 0px 0px 10px #000;
+}
+.main-nav {
+  display: flex;
+  margin: 0 auto;
+  padding: 3px;
+  width: 30%;
+  height: 35px;
+  justify-content: center;
+}
+.main-nav h1 {
+  border-top: 1px solid rgba(255, 255, 255, .5);
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  font-weight: 100;
+  font-family: 'Kanit';
+  font-size: 110%;
+  line-height: 115%;
+  text-align: center;
+  color: white;
+}
+.main-nav ul {
+  display: flex;
+  flex:1;
+  margin: 0;
+  padding:0;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.main-nav li {
+  font-weight: 100;
+  margin: 5px 10px;
+  width: 100px;
+  text-align: center;
+}
+.main-nav li a{
+  flex: 1;
+  border-left: 1px solid rgb(100,1,6);
+  display: block;
+  color: white;
+  font-size: 50%;
+  padding: 3px;
+  line-height: 160%;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: border .5s, box-shadow .5s;
+}
+.main-nav li a:hover,
+.main-nav li a:active {
+  box-shadow: 0px 0px 30px black;
+}
