@@ -18,7 +18,7 @@
       <ul>
         <li><a href="index.php" class="active">HOME</a></li>
         <li><a href="student-page.php">MY PAGE</a></li>
-        <li><a href="about.php">ABOUT</a></li>
+        <li><a href="about.html">ABOUT</a></li>
       </ul>
     </nav>
     <div class="user-account-nav">

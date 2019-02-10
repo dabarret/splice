@@ -6,46 +6,39 @@
     <link href="styles.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <link href="https://fonts.iu.edu/style.css?family=BentonSans:regular,bold|BentonSansCond:regular|GeorgiaPro:regular" media="screen" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="app.js" async></script>
   </head>
-  <body>
-  <header>
-    <div class = "title"><h1>SPLICE</h1></div>
-    <nav>
-      <ul>
-        <li><a href="index.html">//Home</a></li>
-        <li><a href="studentPage.html">//My Page</a></li>
-        <li><a href="about.html" class="active">//About</a></li>
-      </ul>
-    </nav>
-    <div id="userInfo">
-      <img src="img/guest.png">
-      <a href = "#">Login</a>
-    </div>
-    <div class = "menu-toggle"><i class = "fa fa-bars" aria-hidden = "true"></i></div>
-  </header>
-
-
-  <div class = "content">
-    <div id = "mainHeader">
-      <div id="masuda">
-        <img src="guest.png">
-        <h4>Dr. Masuda</h4>
-      </div>
-      <div id="about">
-        <p>This area is for Dr. Masuda to introduce herself and the site.</p>
-      </div>
-    </div>
-    <div id="purpose">
-        <p>This area is for telling how the site works and it's purpose.</p>
-    </div>
-
-    </div>
-
-
-
-  </div>
-  </body>
+<body>
+	<header>
+		<nav class="main-nav">
+			<h1>SPLICE</h1>
+			<ul>
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="student-page.php">MY PAGE</a></li>
+				<li><a href="about.html" class="active">ABOUT</a></li>
+			</ul>
+			<form action="/action_page.php" class="user-login">
+				<input type="text" name="uname" placeholder="Username"><br>
+  				<input type="password" name="pword" placeholder="Password"><br>
+  				<input type="submit" value="Login">
+			</form>
+		</nav>
+	</header>
+	<section class="section-main">
+		<div class="img-heading">
+			<div class="intro-heading">
+				<h1>Hisako Masuda, Ph.D.</h1>
+				<p>Assistant Professor of Biochemistry</p>
+			</div>
+			<div class="intro-desc">
+				<img src="img/masuda.jpg">
+				<p><span>What is S.P.L.I.C.E?</span><br>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt ornare massa eget. Nunc sed blandit libero volutpat sed cras. Ullamcorper velit sed ullamcorper morbi. Ut etiam sit amet nisl purus in. Cursus in hac habitasse platea dictumst quisque. Vulputate eu scelerisque felis imperdiet proin. Enim tortor at auctor urna nunc. Tempor id eu nisl nunc. Vitae semper quis lectus nulla. Vel eros donec ac odio tempor orci dapibus ultrices. Ipsum faucibus vitae aliquet nec ullamcorper. Facilisi etiam dignissim diam quis enim.<br>
+				Diam phasellus vestibulum lorem sed. Nullam non nisi est sit amet facilisis magna etiam tempor. Pellentesque elit ullamcorper dignissim cras tincidunt lobortis feugiat. Hendrerit dolor magna eget est lorem. Mattis enim ut tellus elementum sagittis vitae et leo. Ullamcorper a lacus vestibulum sed arcu non odio. Sapien eget mi proin sed libero enim sed faucibus. At lectus urna duis convallis convallis tellus. Faucibus turpis in eu mi bibendum neque egestas congue. Arcu cursus vitae congue mauris rhoncus.</p>
+			</div>
+		</div>
+	</section>
+</body>
 </html>
