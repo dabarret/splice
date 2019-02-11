@@ -8,6 +8,7 @@
 		 //assign each forms input to its corresponding variable
 		 $email = $_POST['mail'];
 		 $username = $_POST['uname'];
+		 $universityID = $_POST['uniID'];
 		 $password = $_POST['pword'];
 		 $passwordrepeat = $_POST['pwordrepeat'];
 
