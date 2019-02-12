@@ -1,29 +1,36 @@
 <?php
-	//check to see if that buton has been pressed and has a post method
-	 if (isset($_POST['signup-submit'])) {
+	//check to see if that button has been pressed and has a post method in the form
+	 if (isset($_POST['register-user'])) {
 		 //if it has, run this code
-		 //link the database for this page
+		 //link the database for this page, you'll need it to insert new users
 		 require 'dbh.inc.php';
 
-		 //assign each forms input to its corresponding variable
-		 $email = $_POST['mail'];
+		 //assign each forms input to a variable
+		 //the post method gets the value from the input element
+		 $firstname = $_POST['fname'];
+		 $lastname = $_POST['lname'];
+		 $email = $_POST['email'];
 		 $username = $_POST['uname'];
 		 $universityID = $_POST['uniID'];
 		 $password = $_POST['pword'];
 		 $passwordrepeat = $_POST['pwordrepeat'];
-
+		 
+		 //*************************************************************************************//
+		 //**********************CHECK FOR MISSING OR INVALID FORM INPUTS***********************//
+		 //*************************************************************************************//
+		 
 		 //check if any of the input are empty
-		 if (empty($email) || empty($username) || empty($password) ||empty($passwordrepeat)){
+		 if (empty($firstname) || empty($lastname) || empty($email) || empty($universityID) || empty($username) || empty($password) ||empty($passwordrepeat)){
 			 //create an error message if any are empty
 			 //inside the url, send back information that has been filled out correctly
-			 header("Location: ../signup.php?error=emptyfields&uname=".$username."&mail=".$email);
+			 header("Location: ../pages/register-student.php?error=emptyfields&uname=".$username."&mail=".$email."&fname=".$firstname."&lname=".$lastname);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
 		 //check for both invalid email and username
 		 else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 			 //send back nothing
-			 header("Location: ../signup.php?error=invalidemailusername");
+			 header("Location: ../pages/register-student.php?error=invalidemailusername");
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
@@ -32,7 +39,7 @@
 		 //returns true or false
 		 else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			 //send back just the username
-			 header("Location: ../signup.php?error=invalidemail&uname=".$username);
+			 header("Location: ../pages/register-student.php?error=invalidemail&uname=".$username);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
@@ -40,17 +47,23 @@
 		 //preg_match scans the uname for any of these charactes, if one isn't valid, error is thrown
 		 else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 			 //send back just the email
-			 header("Location: ../signup.php?error=invalidusername&mail=".$email);
+			 header("Location: ../pages/register-student.php?error=invalidusername&mail=".$email);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
 		 //check if passwords match
 		 else if ($password !== $passwordrepeat) {
 			 //send back username and password
-			 header("Location: ../signup.php?error=passwordcheck&mail=".$email."&uname=".$username);
+			 header("Location: ../pages/register-student.php?error=passwordcheck&mail=".$email."&uname=".$username);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
+		 
+		 //*************************************************************************************//
+		 //***************ALL INPUTS ARE VALID, NOW CHECK FOR TAKEN USERNAME********************//
+		 //*************************************************************************************//
+		 
+		 
 		 //check if username has been taken
 		 else {
 			 //create a query to scan the database for matching username
@@ -63,7 +76,7 @@
 			 //try and prepare the sql statement, if theres no error then proceed
 			 if (!mysqli_stmt_prepare($statement, $sql)) {
 				 //display the error
-				 header("Location: ../signup.php?error=sqlerror");
+				 header("Location: ../pages/register-student.php?error=sqlerror");
 				 exit();
 			 }
 			 else { //if theres no error from the prepare statement
@@ -74,7 +87,7 @@
 				//if there is a match, it will be greater than 0
 				 if ($resultCheck > 0){
 					 //send back the email with a username taken error
-					header("Location: ../signup.php?error=usertaken&mail=".$email);
+					header("Location: ../pages/register-student.php?error=usertaken&mail=".$email);
 				 	exit();
 				 }
 				 else { //insert new user into database
@@ -83,14 +96,14 @@
 
 					 if (!mysqli_stmt_prepare($statement, $sql)) {
 						 //display the error
-						 header("Location: ../signup.php?error=sqlerror");
+						 header("Location: ../pages/register-student.php?error=sqlerror");
 						 exit();
 					 }
 					 else { //if theres no error from the prepare statement
 						 $hashedpwd = password_hash($password, PASSWORD_DEFAULT); //hash the password before binding
 						 mysqli_stmt_bind_param($statement, "sss", $username, $email, $hashedpwd); //bind the parameters to the statment
 						 mysqli_stmt_execute($statement); //execute the new statement
-						 header("Location: ../signup.php?signup=success");
+						 header("Location: ../pages/register-student.php?signup=success");
 						 exit();
 					}
 				 }
@@ -101,5 +114,5 @@
 	 }
 
 	 else {
-		 header("Location: ../signup.php");
+		 header("Location: ../pages/register-student.php");
 	 }
