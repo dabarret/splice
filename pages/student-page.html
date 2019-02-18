@@ -1,32 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-  <meta name = "viewport" content="width=device-width, initial-scale=1.0">
-  <head>
-    <title>SPLICE</title>
-    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
-    <link href="https://fonts.iu.edu/style.css?family=BentonSans:regular,bold|BentonSansCond:regular|GeorgiaPro:regular" media="screen" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-  </head>
-<body>
-	<header>
-		<nav class="main-nav">
-			<h1>SPLICE</h1>
-			<ul>
-				<li><a href="../index.html">HOME</a></li>
-				<li><a href="student-page.html" class="active">MY PAGE</a></li>
-				<li><a href="register-student.html">REGISTER</a></li>
-				<li><a href="about.html">ABOUT</a></li>
-			</ul>
-			<form action="includes/login.inc.php" method="post" class="user-login">
-				<input type="text" name="uname" placeholder="Username"><br>
-  				<input type="password" name="pword" placeholder="Password"><br>
-  				<input type="submit" value="Login">
-			</form>
-		</nav>
-	</header>
-</body>
+	<meta name = "viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<title>SPLICE</title>
+		<link href="../css/styles.css" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+		<link href="https://fonts.iu.edu/style.css?family=BentonSans:regular,bold|BentonSansCond:regular|GeorgiaPro:regular" media="screen" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body>
+		<header>
+			<nav class="main-nav">
+				<h1>SPLICE</h1>
+				<ul>
+					<li><a href="../index.html">HOME</a></li>
+					<li><a href="student-page.html" class="active">MY PAGE</a></li>
+					<li><a href="register-student.html">REGISTER</a></li>
+					<li><a href="about.html">ABOUT</a></li>
+				</ul>
+				<form action="includes/login.inc.php" method="post" class="user-login">
+					<input type="text" name="uname" placeholder="Username"><br>
+					<input type="password" name="pword" placeholder="Password"><br>
+					<input type="submit" value="Login">
+				</form>
+			</nav>
+		</header>
+		<section class="section-main">
+			<div class = "student-uploads">
+				<div class="uploads-heading">
+					<h1 class="uploads-title">My Uploads</h1>
+					<div class="filter-uploads">
+						<h2>Uploads Filter</h2>
+						<div class="filter-type">
+							<p class="filter-year">Year</p>
+							<span>All (default): </span><input type="checkbox" name="year2019" value="2019"><br>
+							<span>2019</span> <input type="checkbox" name="year2019" value="2019">
+							<span>2020</span> <input type="checkbox" name="year2020" value="2020">
+						</div>
+						<div class="filter-type">
+							<p class="filter-month">Month</p>
+							<span>All (default):</span> <input type="checkbox" name="monthAll" value="allMonth"><br>
+							<span>Jan:</span> <input type="checkbox" name="monthJan" value="January">
+							<span>Feb:</span> <input type="checkbox" name="monthFeb" value="February">
+							<span>Mar:</span> <input type="checkbox" name="monthApr" value="March"><br>
+							<span>Apr:</span> <input type="checkbox" name="monthMay" value="April">
+							<span>May:</span> <input type="checkbox" name="monthJun" value="May">
+							<span>Jun:</span> <input type="checkbox" name="monthJul" value="June"><br>
+							<span>Jul:</span> <input type="checkbox" name="monthAug" value="July">
+							<span>Aug:</span> <input type="checkbox" name="monthSep" value="August">
+							<span>Sep:</span> <input type="checkbox" name="monthOct" value="September"><br>
+							<span>Oct:</span> <input type="checkbox" name="monthNov" value="October">
+							<span>Nov:</span> <input type="checkbox" name="monthDec" value="November">
+							<span>Dec:</span> <input type="checkbox" name="monthAll" value="December">
+						</div>
+						<input id="apply-filters" name="filter-btn" type="button" value="Apply">
+					</div>
+				</div>
+			</div>
+		</section>
+		<input id="student-data-upload" name="upload" type="button" value="+Upload">
+	</body>
 </html>
