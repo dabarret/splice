@@ -1,0 +1,52 @@
+<nav class="main-nav">
+  <h1>SPLICE</h1>
+  <ul>
+    <?php
+      //echo out certain nav items if the user is logged in and add active classes where appropriate
+      //HOME PAGE
+      if ($activePage == "homePage") echo '<li><a href="index.php" class="active">HOME</a></li>';
+      else echo '<li><a href="index.php">HOME</a></li>';
+
+      //STUDENT PAGE
+      //only show this nav item if the user is logged in
+      if (isset($_SESSION['userId'])){
+        if ($activePage == "studentPage"){
+          echo '<li><a href="student-page.php" class="active">MY PAGE</a></li>';
+        } else echo '<li><a href="student-page.php">MY PAGE</a></li>';
+      }
+
+      //REGISTER PAGE
+      //only show this page if the user is not registered
+      if (!isset($_SESSION['userId'])){
+        if ($activePage == "registerStudent"){
+          echo '<li><a href="register-student.php" class="active">REGISTER</a></li>';
+        } else echo '<li><a href="register-student.php">REGISTER</a></li>';
+      }
+
+      //ABOUT PAGE
+      if ($activePage == "aboutPage") echo '<li><a href="about.php" class="active">ABOUT</a></li>';
+      else echo '<li><a href="about.php">ABOUT</a></li>';
+    ?>
+  </ul>
+  <?php
+    if (isset($_SESSION['userId'])){
+      echo '
+      <div class="user-info">
+        <p class="username">'
+        .$_SESSION['uname'].
+        '</p>
+        <a href="logout.inc.php" class="logout-link">LOGOUT</a>
+      </div>';
+    }
+    //if no user is logged in, echo out the login form
+    else {
+      echo '
+      <form action="../includes/login.inc.php" method="post" class="user-login">
+        <input type="text" name="unameid" placeholder="Username/Email"><br>
+        <input type="password" name="pword" placeholder="Password"><br>
+        <input name="login-user" type="submit" value="Login">
+      </form>
+      ';
+    }
+   ?>
+</nav>

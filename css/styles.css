@@ -123,6 +123,23 @@ header {
 	box-shadow: 0px 2px 10px #000;
 	color: white;
 }
+.user-info {
+	display: flex;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+.username {
+	font-weight: 100;
+	color: white;
+	font-size: 65%;
+	margin-right: 5px;
+}
+.logout-link {
+	font-weight: 100;
+	color: white;
+	font-size: 55%;
+}
 
 /*----------------------------------*/
 /*-------------REUSABLES------------*/
@@ -198,9 +215,9 @@ header {
 	font-weight: 100;
 	font-size: 110%;
 	padding-bottom: 5px;
-	border-bottom: 1px solid white;	
+	border-bottom: 1px solid white;
 }
-.register-form form{
+.register-form form {
 	font-family: BentonSansRegular,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
 	text-align: center;
 }
@@ -326,19 +343,3 @@ header {
 	background-color: white;
 	color: rgb(100,1,6);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

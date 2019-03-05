@@ -14,11 +14,11 @@
 		 $universityID = $_POST['uniID'];
 		 $password = $_POST['pword'];
 		 $passwordrepeat = $_POST['pwordrepeat'];
-		 
+
 		 //*************************************************************************************//
 		 //**********************CHECK FOR MISSING OR INVALID FORM INPUTS***********************//
 		 //*************************************************************************************//
-		 
+
 		 //check if any of the input are empty
 		 if (empty($firstname) || empty($lastname) || empty($email) || empty($universityID) || empty($username) || empty($password) ||empty($passwordrepeat)){
 			 //create an error message if any are empty
@@ -58,21 +58,19 @@
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
-		 
+
 		 //*************************************************************************************//
 		 //***************ALL INPUTS ARE VALID, NOW CHECK FOR TAKEN USERNAME********************//
 		 //*************************************************************************************//
-		 
-		 
+
 		 //check if username has been taken
 		 else {
 			 //create a query to scan the database for matching username
 			 //use prepared statements to avoid any injections
-			 $sql = "SELECT unameUsers FROM users WHERE unameUsers=?"; // use ? as a placeholder
+			 $sql = "SELECT USERNAME FROM student WHERE USERNAME=?"; // use ? as a placeholder
 			 //this is a prepared statement
 			 //make a connection to the database to use as a variable
 			 $statement = mysqli_stmt_init($conn);
-
 			 //try and prepare the sql statement, if theres no error then proceed
 			 if (!mysqli_stmt_prepare($statement, $sql)) {
 				 //display the error
@@ -90,29 +88,53 @@
 					header("Location: ../pages/register-student.php?error=usertaken&mail=".$email);
 				 	exit();
 				 }
-				 else { //insert new user into database
-					 $sql = "INSERT INTO users (unameusers, emailUsers, pwdUsers) VALUES (?,?,?)"; //insert into users, use palceholders for now
-					 $statement = mysqli_stmt_init($conn);
 
-					 if (!mysqli_stmt_prepare($statement, $sql)) {
+				 //*************************************************************************************//
+				 //***************USERNAME IS FREE, NOW EXECUTE SQL STATEMENT********************//
+				 //*************************************************************************************//
+
+				 else { //insert new user into database
+					 $sql = "INSERT INTO student (
+						 USERNAME,
+						 EMAIL,
+						 PWORD,
+						 FNAME,
+						 LNAME,
+						 STUDENT_ID
+					 ) VALUES (?,?,?,?,?,?)"; //insert into users, use placeholders for now
+					 $statement = mysqli_stmt_init($conn);
+					 //check if the statement will execute properly
+					 if (!mysqli_stmt_prepare($statement, $sql)) { //returns true or false
 						 //display the error
 						 header("Location: ../pages/register-student.php?error=sqlerror");
 						 exit();
 					 }
 					 else { //if theres no error from the prepare statement
 						 $hashedpwd = password_hash($password, PASSWORD_DEFAULT); //hash the password before binding
-						 mysqli_stmt_bind_param($statement, "sss", $username, $email, $hashedpwd); //bind the parameters to the statment
+						 //bind all the params to the statement
+						 mysqli_stmt_bind_param($statement, "ssssss",
+							 $username,
+							 $email,
+							 $hashedpwd,
+							 $firstname,
+							 $lastname,
+							 $universityID
+						 );
 						 mysqli_stmt_execute($statement); //execute the new statement
-						 header("Location: ../pages/register-student.php?signup=success");
+						 header("Location: ../pages/new-user-login.php");
 						 exit();
 					}
 				 }
 		 	}
 		 }
+
+		 //*************************************************************************************//
+		 //**********************USER SUCCESSFULLY CREATED, END CONNECTION**********************//
+		 //*************************************************************************************//
+
 		 msqli_stmt_close($statement);
 		 mysqli_close($conn);
 	 }
-
 	 else {
 		 header("Location: ../pages/register-student.php");
 	 }
