@@ -17,8 +17,7 @@
 			$sql = "SELECT *
 							FROM student
 							WHERE USERNAME=?
-							OR EMAIL=?;
-							"; //leave the values as placeholders for now, we use prepared statements for that
+							OR EMAIL=?;"; //leave the values as placeholders for now, we use prepared statements for that
 			$stmt = mysqli_stmt_init($conn); //initialize the connection with the database
 			//prepare the statement to catch any errors that might come about when executing
 			if (!mysqli_stmt_prepare($stmt, $sql)){
@@ -30,12 +29,12 @@
 				mysqli_stmt_bind_param($stmt, "ss", $mailuid, $mailuid);
 				mysqli_stmt_execute($stmt);
 				$result = mysqli_stmt_get_result($stmt);
-				//set the result from the database as an associative array
+				//set the result from the database as an associative array, aka a "row"
 				if ($row = mysqli_fetch_assoc($result)){
 					//compare the two passwords for validation
 					$pwdCheck = password_verify($password, $row['PWORD']); //returns true or false
 					if ($pwdCheck == false){
-						header("Location: ../pages/new-user-login.php?error=wrongpwd");
+						header("Location: ../pages/new-user-login.php?error=wrongpwd&uname=".$mailuid);
 						exit();
 					}
 					else if ($pwdCheck == true){
@@ -55,7 +54,7 @@
 					}
 				}
 				else {
-					header("Location: ../pages/new-user-login?error=nouser");
+					header("Location: ../pages/new-user-login.php?error=nouser&uname=".$mailuid);
 					exit();
 				}
 			}

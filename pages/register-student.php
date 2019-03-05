@@ -31,5 +31,25 @@
 			</div>
 		</div>
 	</section>
+	<?php
+	//output errors when trying to register a user
+		if(isset($_GET['error'])){
+			if ($_GET['error'] == "emptyfields"){
+				echo '<p class="signup-error">Fill in all fields!</p>';
+			}
+			else if ($_GET['error'] == "invalidemailusername"){
+				echo '<p class="signup-error">Invalid email and username!</p>';
+			}
+			else if ($_GET['error'] == "invalidemail"){
+				echo '<p class="signup-error">Invalid email!</p>';
+			}
+			else if ($_GET['error'] == "invalidusername"){
+				echo '<p class="signup-error">Invalid username! May only contain letters and numbers.</p>';
+			}
+			else if ($_GET['error'] == "passwordcheck"){
+				echo '<p class="signup-error">Passwords do not match!</p>';
+			}
+		}
+	?>
 </body>
 </html>

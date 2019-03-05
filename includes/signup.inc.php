@@ -67,7 +67,9 @@
 		 else {
 			 //create a query to scan the database for matching username
 			 //use prepared statements to avoid any injections
-			 $sql = "SELECT USERNAME FROM student WHERE USERNAME=?"; // use ? as a placeholder
+			 $sql = "SELECT USERNAME
+			 				 FROM student
+							 WHERE USERNAME=?"; // use ? as a placeholder
 			 //this is a prepared statement
 			 //make a connection to the database to use as a variable
 			 $statement = mysqli_stmt_init($conn);
@@ -121,7 +123,7 @@
 							 $universityID
 						 );
 						 mysqli_stmt_execute($statement); //execute the new statement
-						 header("Location: ../pages/new-user-login.php");
+						 header("Location: ../pages/new-user-login.php?signup=success");
 						 exit();
 					}
 				 }

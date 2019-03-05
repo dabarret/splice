@@ -94,12 +94,11 @@ header {
 .user-login input{
 	border: none;
 	padding: 2px;
-	border-bottom: 1px solid rgba(255, 252, 252, 0.46);
 	border-radius: 2px;
 	color: white;
 	background: rgb(64, 0, 3);
 	width: 150px;
-	height: 20px;
+	height: 25px;
 	font-size: 65%;
 	margin: 2px;
 	font-family: BentonSansRegular,"Helvetica Neue",Helvetica,Helvetica,Arial,sans-serif;
@@ -264,6 +263,20 @@ header {
 .register-form form input:focus{
 	outline: none;
 	background: rgb(36, 0, 2);
+}
+.signup-success{
+	position: relative;
+	top: 5%;
+	color: green;
+	text-align: center;
+	font-size: 80%;
+}
+.signup-error {
+	position: relative;
+	top: 50px;
+	color: red;
+	text-align: center;
+	font-size: 80%;
 }
 
 /*----------------------------------*/
