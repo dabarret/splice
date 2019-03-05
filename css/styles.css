@@ -130,15 +130,18 @@ header {
 	top: 10px;
 }
 .username {
+	position: relative;
+	top: -3px;
 	font-weight: 100;
 	color: white;
-	font-size: 65%;
-	margin-right: 5px;
+	font-size: 75%;
+	margin-right: 10px;
 }
-.logout-link {
-	font-weight: 100;
+.logout-link ion-icon{
+	position: relative;
+	top: 1px;
 	color: white;
-	font-size: 55%;
+	font-size: 80%;
 }
 
 /*----------------------------------*/
