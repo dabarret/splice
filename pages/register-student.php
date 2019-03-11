@@ -14,12 +14,42 @@
 				<h1>Register</h1>
 				<form action="../includes/signup.inc.php" method="post" class="register-user">
 					<p>First and Last Name</p>
-					<input type="text" name="fname" placeholder="First">
-					<input type="text" name="lname" placeholder="Last"><br>
+					<?php
+					//SAVING FIRST AND LAST NAME IF RELOADED
+						if (isset($_GET['fname'])){
+							if ($_GET['fname'] !== ""){
+								echo '<input type="text" name="fname" placeholder="First" value="'.$_GET['fname'].'">';
+							}
+							else echo '<input type="text" name="fname" placeholder="First">';
+						} else echo '<input type="text" name="fname" placeholder="First">';
+
+						if (isset($_GET['lname'])){
+							if ($_GET['lname'] !== ""){
+								echo ' <input type="text" name="lname" placeholder="Last" value="'.$_GET['lname'].'">';
+							}
+							else echo ' <input type="text" name="lname" placeholder="Last">';
+						} else echo ' <input type="text" name="lname" placeholder="Last">';
+					?>
 					<p>Username</p>
-					<input type="text" name="uname"><br>
+					<?php
+					//SAVING USERNAME IF RELOADED
+						if (isset($_GET['uname'])){
+							if ($_GET['uname'] !== ""){
+								echo '<input type="text" name="uname" value="'.$_GET['uname'].'">';
+							}
+							else echo '<input type="text" name="uname"><br>';
+						} else echo '<input type="text" name="uname"><br>';
+					?>
 					<p>Email</p>
-					<input type="email" name="email"><br>
+					<?php
+					//SAVING EMAIL IF RELOADED
+						if (isset($_GET['mail'])){
+							if ($_GET['mail'] !== ""){
+								echo '<input type="email" name="email" value="'.$_GET['mail'].'">';
+							}
+							else echo '<input type="email" name="email"><br>';
+						} else echo '<input type="email" name="email"><br>';
+					?>
 					<p>University Student ID</p>
 					<input type="text" name="uniID"><br>
 					<p>Password</p>

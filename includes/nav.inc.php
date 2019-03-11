@@ -35,7 +35,7 @@
         <p class="username">'
         .$_SESSION['uname'].
         '</p>
-        <a href="../includes/logout.inc.php" class="logout-link"><ion-icon name="exit"></ion-icon></a>
+        <a href="../includes/logout.inc.php" class="logout-link" title="Logout"><ion-icon name="exit"></ion-icon></a>
       </div>';
     }
     //if no user is logged in, echo out the login form

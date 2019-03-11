@@ -21,6 +21,9 @@
         else if ($_GET['error'] == "nouser"){
           echo '<p class="signup-error">Username "'.$_GET['uname'].'" does not exist!</p>';
         }
+        else if ($_GET['error'] == "wrongpwd"){
+          echo '<p class="signup-error">Incorrect password!</p>';
+        }
       }
      ?>
     <section class="section-main">

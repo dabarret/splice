@@ -30,7 +30,7 @@
 		 //check for both invalid email and username
 		 else if (!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 			 //send back nothing
-			 header("Location: ../pages/register-student.php?error=invalidemailusername");
+			 header("Location: ../pages/register-student.php?error=invalidemailusername&fname=".$firstname."&lname=".$lastname."&uname=".$username."&mail=".$email);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
@@ -39,7 +39,7 @@
 		 //returns true or false
 		 else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 			 //send back just the username
-			 header("Location: ../pages/register-student.php?error=invalidemail&uname=".$username);
+			 header("Location: ../pages/register-student.php?error=invalidemail&uname=".$username."&fname=".$firstname."&lname=".$lastname."&mail=".$email);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
@@ -47,14 +47,14 @@
 		 //preg_match scans the uname for any of these charactes, if one isn't valid, error is thrown
 		 else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
 			 //send back just the email
-			 header("Location: ../pages/register-student.php?error=invalidusername&mail=".$email);
+			 header("Location: ../pages/register-student.php?error=invalidusername&mail=".$email."&uname=".$username."&fname=".$firstname."&lname=".$lastname);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
 		 //check if passwords match
 		 else if ($password !== $passwordrepeat) {
 			 //send back username and password
-			 header("Location: ../pages/register-student.php?error=passwordcheck&mail=".$email."&uname=".$username);
+			 header("Location: ../pages/register-student.php?error=passwordcheck&mail=".$email."&uname=".$username."&fname=".$firstname."&lname=".$lastname);
 			 //stop this entire script if user enters this conditional
 			 exit();
 		 }
