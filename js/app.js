@@ -1,24 +1,9 @@
+let table; //holds the table data
+let parsedData; //holds the parsed csv file
+let csvFile; //holds the csv file
 
 $(document).ready(function () {
-    $('.menu-toggle').click(function(){
-        $('nav').toggleClass('active');
-    })
-        
+  //set table to the uploaded data
+  table = new Tabulator("#data-table", )
+
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
