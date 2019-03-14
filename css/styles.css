@@ -365,7 +365,7 @@ header {
 /*----------------------------------*/
 
 .data-main {
-	width: 65%;
+	width: 75%;
 	margin: 20px auto;
 }
 .data-title {
@@ -381,11 +381,21 @@ header {
 }
 .data-body {
 	background: white;
-	border-right: 1px solid gray;
-	border-left: 1px solid gray;
-	border-bottom: 1px solid gray;
+	box-shadow: 0px 2px 10px #AB9C86;
 	height: 75%;
 	width: 95%;
 	margin: 0 auto;
 	overflow-y: scroll;
+}
+
+/*----------------------------------*/
+/*----------TABLE STYLES------------*/
+/*----------------------------------*/
+.tabulator-col-title {
+	text-align: center;
+	font-size: 75%;
+}
+.tabulator-cell {
+	text-align: center;
+	font-size: 75%;
 }

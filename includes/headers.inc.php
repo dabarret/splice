@@ -9,8 +9,8 @@
   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../js/libs/tabulator/dist/css/tabulator.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script type="text/javascript" src="../js/table.js"></script>
   <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
   <script type="text/javascript" src="../js/libs/tabulator/dist/js/tabulator.min.js"></script>
   <script type="text/javascript" src="../js/libs/papaparse/papaparse.min.js"></script>
+  <script type="text/javascript" src="../js/table.js"></script>
 </head>
