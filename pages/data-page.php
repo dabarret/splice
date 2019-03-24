@@ -15,7 +15,6 @@
       </div>
       <div class="data-body">
         <div id="data-table">
-
         </div>
       </div>
     </div>
@@ -25,6 +24,11 @@
 		<button>Save and Export</button>
 	</section>
 	<div class="comment-box">
+		<div class="comment-box-title">
+			<h3>Comments</h3>
+			<ion-icon name='chatboxes'></ion-icon>
+			<p>Select a row to see it's comments</p>
+		</div>
 	</div>
 </body>
 </html>

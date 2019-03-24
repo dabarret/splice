@@ -51,21 +51,6 @@ let buildTable = tableData => {
         {title:"Size", field:"Size", align:"center"},
         {title:"E score", field:"E score", align:"center"},
         {title:"Confirm", field:"confirm", align:"center", editor:true, formatter:"tickCross"},
-        {title:"<ion-icon name='chatboxes'></ion-icon>", field: "addComment", width: 55, align: "center", cellClick: function(e, cell)
-        {
-          //set the comment box location to the location of the cell clicked
-          let commentBoxLoc = $(cell.getElement()).offset();
-          //change the cell background color
-          $(cell.getElement()).css({
-            background: "#3f3fea",
-          })
-          console.log(commentBoxLoc);
-          $('.comment-box').css({
-            top:commentBoxLoc.top,
-            left:commentBoxLoc.left+75,
-            visibility: "visible",
-          });
-        }},
     ],
   });
 }
