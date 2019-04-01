@@ -50,8 +50,6 @@
 							else echo '<input type="email" name="email"><br>';
 						} else echo '<input type="email" name="email"><br>';
 					?>
-					<p>University Student ID</p>
-					<input type="text" name="uniID"><br>
 					<p>Password</p>
 					<input type="password" name="pword"><br>
 					<p>Repeat Password</p>

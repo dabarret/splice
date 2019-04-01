@@ -15,9 +15,9 @@
 		else {
 			//set up the sql statement for execution
 			$sql = "SELECT *
-							FROM student
-							WHERE USERNAME=?
-							OR EMAIL=?;"; //leave the values as placeholders for now, we use prepared statements for that
+							FROM user
+							WHERE Username=?
+							OR Email=?;"; //leave the values as placeholders for now, we use prepared statements for that
 			$stmt = mysqli_stmt_init($conn); //initialize the connection with the database
 			//prepare the statement to catch any errors that might come about when executing
 			if (!mysqli_stmt_prepare($stmt, $sql)){
@@ -32,7 +32,7 @@
 				//set the result from the database as an associative array, aka a "row"
 				if ($row = mysqli_fetch_assoc($result)){
 					//compare the two passwords for validation
-					$pwdCheck = password_verify($password, $row['PWORD']); //returns true or false
+					$pwdCheck = password_verify($password, $row['Pword']); //returns true or false
 					if ($pwdCheck == false){
 						header("Location: ../pages/new-user-login.php?error=wrongpwd&uname=".$mailuid);
 						exit();
@@ -40,10 +40,10 @@
 					else if ($pwdCheck == true){
 						//start a session and assign _SESSION variables
 						session_start();
-						$_SESSION['userId'] = $row['USER_ID'];
-						$_SESSION['uname'] = $row['USERNAME'];
-						$_SESSION['fname'] = $row['FNAME'];
-						$_SESSION['lname'] = $row['LNAME'];
+						$_SESSION['userId'] = $row['UserID'];
+						$_SESSION['uname'] = $row['Username'];
+						$_SESSION['fname'] = $row['FirstName'];
+						$_SESSION['lname'] = $row['LastName'];
 						//send users back to home page
 						header("Location: ../pages/index.php?login=success");
 						exit();

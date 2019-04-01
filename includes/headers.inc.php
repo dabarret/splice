@@ -13,4 +13,5 @@
   <script type="text/javascript" src="../js/libs/tabulator/dist/js/tabulator.min.js"></script>
   <script type="text/javascript" src="../js/libs/papaparse/papaparse.min.js"></script>
   <script type="text/javascript" src="../js/table.js"></script>
+  <script type="text/javascript" src="../js/buttons.js"></script>
 </head>

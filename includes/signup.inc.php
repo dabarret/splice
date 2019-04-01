@@ -11,7 +11,6 @@
 		 $lastname = $_POST['lname'];
 		 $email = $_POST['email'];
 		 $username = $_POST['uname'];
-		 $universityID = $_POST['uniID'];
 		 $password = $_POST['pword'];
 		 $passwordrepeat = $_POST['pwordrepeat'];
 
@@ -20,7 +19,7 @@
 		 //*************************************************************************************//
 
 		 //check if any of the input are empty
-		 if (empty($firstname) || empty($lastname) || empty($email) || empty($universityID) || empty($username) || empty($password) ||empty($passwordrepeat)){
+		 if (empty($firstname) || empty($lastname) || empty($email) || empty($username) || empty($password) ||empty($passwordrepeat)){
 			 //create an error message if any are empty
 			 //inside the url, send back information that has been filled out correctly
 			 header("Location: ../pages/register-student.php?error=emptyfields&uname=".$username."&mail=".$email."&fname=".$firstname."&lname=".$lastname);
@@ -67,14 +66,14 @@
 		 else {
 			 //create a query to scan the database for matching username
 			 //use prepared statements to avoid any injections
-			 $sql = "SELECT USERNAME
-			 				 FROM student
-							 WHERE USERNAME=?"; // use ? as a placeholder
+			 $sql = "SELECT Username
+			 				 FROM user
+							 WHERE Username=?"; // use ? as a placeholder
 			 //this is a prepared statement
 			 //make a connection to the database to use as a variable
 			 $statement = mysqli_stmt_init($conn);
 			 //try and prepare the sql statement, if theres no error then proceed
-			 if (!mysqli_stmt_prepare($statement, $sql)) {
+			 if (!mysqli_stmt_prepare($statement, $sql)){
 				 //display the error
 				 header("Location: ../pages/register-student.php?error=sqlerror");
 				 exit();
@@ -92,18 +91,17 @@
 				 }
 
 				 //*************************************************************************************//
-				 //***************USERNAME IS FREE, NOW EXECUTE SQL STATEMENT********************//
+				 //**********************USERNAME IS FREE, NOW EXECUTE SQL STATEMENT********************//
 				 //*************************************************************************************//
 
 				 else { //insert new user into database
-					 $sql = "INSERT INTO student (
-						 USERNAME,
-						 EMAIL,
-						 PWORD,
-						 FNAME,
-						 LNAME,
-						 STUDENT_ID
-					 ) VALUES (?,?,?,?,?,?)"; //insert into users, use placeholders for now
+					 $sql = "INSERT INTO user (
+						 Username,
+						 Email,
+						 Pword,
+						 FirstName,
+						 LastName
+					 ) VALUES (?,?,?,?,?)"; //insert into users, use placeholders for now
 					 $statement = mysqli_stmt_init($conn);
 					 //check if the statement will execute properly
 					 if (!mysqli_stmt_prepare($statement, $sql)) { //returns true or false
@@ -114,13 +112,12 @@
 					 else { //if theres no error from the prepare statement
 						 $hashedpwd = password_hash($password, PASSWORD_DEFAULT); //hash the password before binding
 						 //bind all the params to the statement
-						 mysqli_stmt_bind_param($statement, "ssssss",
+						 mysqli_stmt_bind_param($statement, "sssss",
 							 $username,
 							 $email,
 							 $hashedpwd,
 							 $firstname,
-							 $lastname,
-							 $universityID
+							 $lastname
 						 );
 						 mysqli_stmt_execute($statement); //execute the new statement
 						 header("Location: ../pages/new-user-login.php?signup=success");
